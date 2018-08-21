@@ -1,0 +1,45 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "ts-node --project packages/leicht/tsconfig.json packages/leicht/src/index.ts",
+        "test": "jest",
+        "test:watch": "jest --watchAll --notify"
+    },
+    "workspaces": [
+        "packages/*"
+    ],
+    "devDependencies": {
+        "@types/jest": "^23.3.1",
+        "@types/node": "^10.7.1",
+        "jest": "^23.5.0",
+        "ts-jest": "^23.1.4",
+        "ts-node": "^7.0.1",
+        "typescript": "^3.0.1"
+    },
+    "prettier": {
+        "semi": true,
+        "tabWidth": 4,
+        "singleQuote": true,
+        "printWidth": 120
+    },
+    "jest": {
+        "rootDir": ".",
+        "modulePaths": [
+            "<rootDir>"
+        ],
+        "moduleFileExtensions": [
+            "ts",
+            "js"
+        ],
+        "transform": {
+            ".ts": "ts-jest"
+        },
+        "testMatch": [
+            "**/tests/*.ts"
+        ],
+        "coverageDirectory": "./coverage",
+        "collectCoverageFrom": [
+            "<rootDir>/**/*.{ts,js}"
+        ]
+    }
+}
