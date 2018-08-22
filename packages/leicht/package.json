@@ -1,0 +1,10 @@
+{
+    "private": true,
+    "name": "leicht",
+    "version": "0.0.0",
+    "dependencies": {},
+    "devDependencies": {
+        "@types/node-fetch": "^2.1.2",
+        "node-fetch": "^2.2.0"
+    }
+}

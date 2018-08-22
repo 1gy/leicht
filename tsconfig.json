@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2018",
+        "strict": true,
+        "strictNullChecks": true,
+        "noImplicitAny": true
+    },
+    "exclude": ["node_modules"]
+}
