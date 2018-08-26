@@ -5,13 +5,13 @@ import { router, get, post, createNamespace } from '../src/router';
 
 describe('router', () => {
     it('no error', async () => {
-        const path1 = get('/path1')(async (req, res) => {
+        const path1 = get('/path1')(async () => {
             return 'get path1';
         });
-        const path2 = post('/path2')(async (req, res) => {
+        const path2 = post('/path2')(async () => {
             return 'post path2';
         });
-        const notFound: RequestHandler = async (req, res) => {
+        const notFound: RequestHandler = async () => {
             return 'not found';
         };
         const route = router([path1, path2]);
@@ -25,13 +25,13 @@ describe('router', () => {
     });
 
     it('simple routing', async () => {
-        const path1 = get('/path1')(async (req, res) => {
+        const path1 = get('/path1')(async () => {
             return 'get path1';
         });
-        const path2 = post('/path2')(async (req, res) => {
+        const path2 = post('/path2')(async () => {
             return 'post path2';
         });
-        const notFound: RequestHandler = async (req, res) => {
+        const notFound: RequestHandler = async () => {
             return 'not found';
         };
         const route = router([path1, path2]);
@@ -62,16 +62,16 @@ describe('router', () => {
     });
 
     it('namespace', async () => {
-        const path1 = get('/path1')(async (req, res) => {
+        const path1 = get('/path1')(async () => {
             return 'get path1';
         });
-        const path2 = post('/path2')(async (req, res) => {
+        const path2 = post('/path2')(async () => {
             return 'post path2';
         });
-        const nestNotFound: RequestHandler = async (req, res) => {
+        const nestNotFound: RequestHandler = async () => {
             return 'nest not found';
         };
-        const notFound: RequestHandler = async (req, res) => {
+        const notFound: RequestHandler = async () => {
             return 'not found';
         };
 

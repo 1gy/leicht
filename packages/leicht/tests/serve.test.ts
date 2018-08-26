@@ -4,7 +4,7 @@ import { serve } from '../src/serve';
 
 describe('serve', () => {
     it('no error', async () => {
-        const server = serve(async (req, res) => {
+        const server = serve(async (req, _) => {
             return `Hello, ${req.url}`;
         });
 
@@ -16,7 +16,7 @@ describe('serve', () => {
     });
 
     it('hello', async () => {
-        const server = serve(async (req, res) => {
+        const server = serve(async (req, _) => {
             return `Hello, ${req.url}`;
         });
 
