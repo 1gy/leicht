@@ -1,25 +1,34 @@
-import { serve } from '../src/serve';
 import fetch from 'node-fetch';
+import { AddressInfo } from 'net';
+import { serve } from '../src/serve';
 
 describe('serve', () => {
     it('no error', async () => {
-        const server = serve(async (req, res) => {
+        const server = serve(async (req, _) => {
             return `Hello, ${req.url}`;
         });
-        server.listen(1234);
-        server.close();
+
+        try {
+            server.listen();
+        } finally {
+            server.close();
+        }
     });
 
     it('hello', async () => {
-        const server = serve(async (req, res) => {
+        const server = serve(async (req, _) => {
             return `Hello, ${req.url}`;
         });
-        server.listen(1234);
 
-        const response = await fetch('http://localhost:1234/hello');
-        const body = await response.text();
-        expect(body).toBe('Hello, /hello');
+        try {
+            server.listen();
+            const address = <AddressInfo>server.address();
 
-        server.close();
+            const response = await fetch(`http://localhost:${address.port}/hello`);
+            const body = await response.text();
+            expect(body).toBe('Hello, /hello');
+        } finally {
+            server.close();
+        }
     });
 });
